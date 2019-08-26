@@ -1,5 +1,5 @@
 
 def call() {
   library('mpl')
-  MPLModulesPath('src')
+  MPLModulesPath('lib')
 }
