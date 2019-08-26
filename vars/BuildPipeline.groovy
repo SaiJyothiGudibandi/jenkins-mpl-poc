@@ -1,4 +1,3 @@
-@Library('mpl') _
 
 def call(){
     MPLInit()

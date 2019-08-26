@@ -1,5 +1,5 @@
-@Library('mpl') _
 
 def call() {
+  library('mpl')
   MPLModulesPath('src')
 }
