@@ -3,10 +3,10 @@ def call(){
     MPLInit()
 
     stage('Build'){
-        MPLModule()
+        MPLModule('Build', CFG)
     }
 
     stage('Test'){
-        MPLModule()
+        MPLModule('Test', CFG)
     }
 }
