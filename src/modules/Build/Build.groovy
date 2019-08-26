@@ -1,3 +1,1 @@
-echo "Overridden  Build"
-
-MPLModule('Build', CFG)
+echo 'Project demo overridden Build module'
