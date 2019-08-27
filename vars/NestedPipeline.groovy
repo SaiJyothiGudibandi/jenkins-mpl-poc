@@ -5,8 +5,11 @@ def call(body){
     MPLModulesPath('lib')
 
     node('ec2'){
+        
+        body()
+
         stage('Build'){
-            println body.nomeApp
+            println nomeApp
             MPLModule('Build', [])
         }
     }
