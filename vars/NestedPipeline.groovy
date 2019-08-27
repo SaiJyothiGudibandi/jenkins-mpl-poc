@@ -1,5 +1,5 @@
 
-def call(){
+def call(body){
     MPLInit()
 
     node('ec2') {
