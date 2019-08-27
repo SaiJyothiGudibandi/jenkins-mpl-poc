@@ -1,10 +1,9 @@
 
-public String nomeApp
-public String rota
-
 def call(body){
     library('mpl')
     MPLModulesPath('lib')
+    String nomeApp
+    String rota
 
     node('ec2'){
 
