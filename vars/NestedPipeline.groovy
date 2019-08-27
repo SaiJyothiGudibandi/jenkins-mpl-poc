@@ -1,8 +1,8 @@
 
-def call(Map CFG){
+def call(body){
     MPLInit()
 
-    node(CFG.agent_label) {
+    node('ec2') {
 
         // def myRepo = checkout scm
         // def branch = myRepo.GIT_BRANCH.replace("origin/","").replace("/","-")
@@ -10,11 +10,11 @@ def call(Map CFG){
         // def imagem_builder = "builder_${nomeApp}_${branch}"
         
         stage('Build'){
-            MPLModule('Build', CFG)
+            MPLModule('Build')
         }
 
         stage('Deploy') {
-            MPLModule('Deploy', CFG)
+            MPLModule('Deploy')
         }
     }
 }
