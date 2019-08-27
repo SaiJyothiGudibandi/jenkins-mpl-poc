@@ -1,6 +1,6 @@
 
-String nomeApp
-String rota
+public String nomeApp
+public String rota
 
 def call(body){
     library('mpl')
@@ -10,10 +10,10 @@ def call(body){
 
         def myRepo = checkout scm
         def branch = myRepo.GIT_BRANCH.replace("origin/","").replace("/","-")
-        def imagem = "${env.ENDPOINT_ECR}/${nomeApp}:v0.1.${env.BUILD_NUMBER}_${branch}_${myRepo.GIT_COMMIT}"
+        def imagem = "${env.ENDPOINT_ECR}/${this.nomeApp}:v0.1.${env.BUILD_NUMBER}_${branch}_${myRepo.GIT_COMMIT}"
 
         stage('Build') {
-            MPLModule('Build', [ imagem: imagem, nomeApp: nomeApp, branch: branch])
+            MPLModule('Build', [ imagem: imagem, nomeApp: this.nomeApp, branch: branch])
         }
 
         stage('Publish') {
@@ -25,7 +25,7 @@ def call(body){
         }
 
         stage('Deploy') {
-            MPLModule('Deploy', [imagem:imagem, rota: rota, branch: branch])
+            MPLModule('Deploy', [imagem:imagem, rota: this.rota, branch: branch])
         }
     }
 }
