@@ -1,5 +1,5 @@
 
-def call(body){
+def call(CFG){
     MPLInit()
 
     node('ec2') {
@@ -10,11 +10,11 @@ def call(body){
         // def imagem_builder = "builder_${nomeApp}_${branch}"
         
         stage('Build'){
-            MPLModule('Build')
+            MPLModule('Build', CFG)
         }
 
         stage('Deploy') {
-            MPLModule('Deploy')
+            MPLModule('Deploy', CFG)
         }
     }
 }
