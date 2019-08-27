@@ -8,11 +8,15 @@ def call(body){
         }
         stages{
             stage('Build'){
-                MPLModule('Build')
+                steps{
+                    MPLModule('Build')
+                }
             }
 
             stage('Deploy') {
-                MPLModule('Deploy')
+                steps{
+                    MPLModule('Deploy')
+                }
             }
         }
     }
