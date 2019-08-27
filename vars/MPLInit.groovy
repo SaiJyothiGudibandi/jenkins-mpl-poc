@@ -1,5 +1,5 @@
 
-def call(any) {
+def call() {
   library('mpl')
   MPLModulesPath('lib')
 }

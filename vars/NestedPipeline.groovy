@@ -1,7 +1,8 @@
 
 def call(body){
     
-    MPLInit()
+    library('mpl')
+    MPLModulesPath('lib')
 
     node('ec2'){
         stage('Build'){
