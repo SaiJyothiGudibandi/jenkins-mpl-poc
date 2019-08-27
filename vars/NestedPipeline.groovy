@@ -10,11 +10,11 @@ def call(CFG){
         // def imagem_builder = "builder_${nomeApp}_${branch}"
         
         stage('Build'){
-            MPLModule('Build', CFG)
+            MPLModule('Build')
         }
 
         stage('Deploy') {
-            MPLModule('Deploy', CFG)
+            MPLModule('Deploy')
         }
     }
 }
