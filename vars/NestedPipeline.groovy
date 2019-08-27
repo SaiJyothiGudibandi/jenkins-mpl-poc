@@ -1,17 +1,12 @@
 
-def call(body){
+def call(Map params){
     
     library('mpl')
     MPLModulesPath('lib')
 
     node('ec2'){
-        
-        body()
-
         stage('Build'){
-            println nomeApp
-            MPLModule('Build', [])
+            MPLModule('Build', [nomeApp: params.nomeApp])
         }
     }
-
 }
