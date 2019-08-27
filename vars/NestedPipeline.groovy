@@ -11,11 +11,7 @@ def call(Map params){
         def imagem = "${env.ENDPOINT_ECR}/${params.nomeApp}:v0.1.${env.BUILD_NUMBER}_${branch}_${myRepo.GIT_COMMIT}"
 
         stage('Build') {
-            MPLModule('Build', [
-                imagem: imagem,
-                nomeApp: params.nomeApp,
-                branch: branch
-            ])
+            MPLModule('Build', [ imagem: imagem, nomeApp: params.nomeApp, branch: branch])
         }
 
         stage('Publish') {
@@ -27,7 +23,7 @@ def call(Map params){
         }
 
         stage('Deploy') {
-            MPLModule('Deploy', [imagem:imagem, rota: params.rota])
+            MPLModule('Deploy', [imagem:imagem, rota: params.rota, branch: branch])
         }
     }
 }

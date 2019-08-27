@@ -1,5 +1,5 @@
 def ambiente = ""
-switch(branch){
+switch(CFG.branch){
     case "qa":
         ambiente = "qa"
         break
