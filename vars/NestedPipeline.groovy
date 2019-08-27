@@ -1,8 +1,8 @@
 
-def call(body){
+def call(Map CFG){
     MPLInit()
 
-    node('ec2') {
+    node(CFG.agent_label) {
 
         // def myRepo = checkout scm
         // def branch = myRepo.GIT_BRANCH.replace("origin/","").replace("/","-")
