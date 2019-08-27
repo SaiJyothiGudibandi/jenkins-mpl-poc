@@ -1,17 +1,18 @@
 
-def call(Map params){
+def call(body){
     
     library('mpl')
     MPLModulesPath('lib')
 
     node('ec2'){
 
+        body()
         def myRepo = checkout scm
         def branch = myRepo.GIT_BRANCH.replace("origin/","").replace("/","-")
-        def imagem = "${env.ENDPOINT_ECR}/${params.nomeApp}:v0.1.${env.BUILD_NUMBER}_${branch}_${myRepo.GIT_COMMIT}"
+        def imagem = "${env.ENDPOINT_ECR}/${nomeApp}:v0.1.${env.BUILD_NUMBER}_${branch}_${myRepo.GIT_COMMIT}"
 
         stage('Build') {
-            MPLModule('Build', [ imagem: imagem, nomeApp: params.nomeApp, branch: branch])
+            MPLModule('Build', [ imagem: imagem, nomeApp: nomeApp, branch: branch])
         }
 
         stage('Publish') {
@@ -23,7 +24,7 @@ def call(Map params){
         }
 
         stage('Deploy') {
-            MPLModule('Deploy', [imagem:imagem, rota: params.rota, branch: branch])
+            MPLModule('Deploy', [imagem:imagem, rota: rota, branch: branch])
         }
     }
 }
