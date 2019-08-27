@@ -1,23 +1,9 @@
 
-def call(){
+def call(body){
+    
     MPLInit()
 
-    pipeline {
-        agent {
-            label 'ec2'
-        }
-        stages{
-            stage('Build'){
-                steps{
-                    MPLModule('Build')
-                }
-            }
-
-            stage('Deploy') {
-                steps{
-                    MPLModule('Deploy')
-                }
-            }
-        }
+    stage('Build'){
+        MPLModule('Build', [nomeApp: body.nomeApp])
     }
 }
