@@ -6,9 +6,8 @@ def call(body){
 
     node('ec2'){
         stage('Build'){
-            MPLModule('Build', [
-                nomeApp: body.nomeApp
-            ])
+            println body.nomeApp
+            MPLModule('Build', [])
         }
     }
 
