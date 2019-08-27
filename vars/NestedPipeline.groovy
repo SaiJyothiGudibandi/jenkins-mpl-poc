@@ -1,9 +1,9 @@
 
-def call(body){
+def call(){
     
     MPLInit()
 
     stage('Build'){
-        MPLModule('Build', [nomeApp: body.nomeApp])
+        MPLModule('Build')
     }
 }
