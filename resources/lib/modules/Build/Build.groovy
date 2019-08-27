@@ -1,1 +1,1 @@
-echo "Build overridden ${CFG}"
+echo "Build overridden ${CFG.nomeApp}"
