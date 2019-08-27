@@ -1,30 +1,33 @@
+library('mpl')
+MPLModulesPath('lib')
 
-def call(body){
-    
-    library('mpl')
-    MPLModulesPath('lib')
+class NestedPipeline extends MPLPipeline {
+    String nomeApp
+    String rota
 
-    node('ec2'){
+    def call(body){
 
-        body()
-        def myRepo = checkout scm
-        def branch = myRepo.GIT_BRANCH.replace("origin/","").replace("/","-")
-        def imagem = "${env.ENDPOINT_ECR}/${nomeApp}:v0.1.${env.BUILD_NUMBER}_${branch}_${myRepo.GIT_COMMIT}"
+        node('ec2'){
 
-        stage('Build') {
-            MPLModule('Build', [ imagem: imagem, nomeApp: nomeApp, branch: branch])
-        }
+            def myRepo = checkout scm
+            def branch = myRepo.GIT_BRANCH.replace("origin/","").replace("/","-")
+            def imagem = "${env.ENDPOINT_ECR}/${nomeApp}:v0.1.${env.BUILD_NUMBER}_${branch}_${myRepo.GIT_COMMIT}"
 
-        stage('Publish') {
-            MPLModule('Publish', [imagem: imagem])
-        }
+            stage('Build') {
+                MPLModule('Build', [ imagem: imagem, nomeApp: nomeApp, branch: branch])
+            }
 
-        stage('Clean') {
-            MPLModule('Clean', [imagem: imagem])
-        }
+            stage('Publish') {
+                MPLModule('Publish', [imagem: imagem])
+            }
 
-        stage('Deploy') {
-            MPLModule('Deploy', [imagem:imagem, rota: rota, branch: branch])
+            stage('Clean') {
+                MPLModule('Clean', [imagem: imagem])
+            }
+
+            stage('Deploy') {
+                MPLModule('Deploy', [imagem:imagem, rota: rota, branch: branch])
+            }
         }
     }
 }
