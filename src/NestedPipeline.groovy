@@ -1,3 +1,0 @@
-class NestedPipeline extends MPLPipeline {
-    
-}
