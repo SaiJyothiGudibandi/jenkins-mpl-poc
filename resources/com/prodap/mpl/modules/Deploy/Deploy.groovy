@@ -11,8 +11,14 @@ switch(CFG.branch){
         break
 }
 
+if(CFG.database && CFG.volume){
+    MPLModule('DeployLiquibase', [ambiente: ambiente, database: CFG.database, CFG.volume])
+}
+
+def host = "env.CONNECTION_STRING_${ambiente.toUpperCase()}"
 withDockerContainer(image: 'bitnami/kubectl:latest', args: "--entrypoint=''"){
     withKubeConfig([credentialsId: "config-${ambiente}"]) {
+        sh("sed -i.bak 's#CONNECTION_STRING_BANCO#${host}#' k8s/dev/deployment.yaml")
         sh "sed -i.bak 's#ecr/${CFG.rota}#${CFG.imagem}#' k8s/${ambiente}/deployment.yaml"
         sh "kubectl apply -f k8s/${ambiente}"
         sh "kubectl apply -f k8s/svc"
