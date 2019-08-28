@@ -1,9 +1,6 @@
-
-
 def call(Map params){
 
-    library('mpl')
-    MPLModulesPath('lib')
+    MPLInit
     node('ec2'){
 
         def myRepo = checkout scm
