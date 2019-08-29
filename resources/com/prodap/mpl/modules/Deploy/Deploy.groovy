@@ -15,7 +15,7 @@ if(CFG.liquibase){
     MPLModule('DeployLiquibase', [liquibase: CFG.liquibase])
 }
 
-def host = "env.CONNECTION_STRING_${ambiente.toUpperCase()}"
+def host = CFG.liquibase ? CFG.liquibase.host : ''
 withDockerContainer(image: 'bitnami/kubectl:latest', args: "--entrypoint=''"){
     withKubeConfig([credentialsId: "config-${ambiente}"]) {
         sh("sed -i.bak 's#CONNECTION_STRING_BANCO#${host}#' k8s/dev/deployment.yaml")
