@@ -11,8 +11,8 @@ switch(CFG.branch){
         break
 }
 
-if(CFG.database && CFG.volume){
-    MPLModule('DeployLiquibase', [ambiente: ambiente, database: CFG.database, volume: CFG.volume])
+if(CFG.liquibase){
+    MPLModule('DeployLiquibase', [liquibase: CFG.liquibase])
 }
 
 def host = "env.CONNECTION_STRING_${ambiente.toUpperCase()}"

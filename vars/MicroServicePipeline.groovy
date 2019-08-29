@@ -22,7 +22,7 @@ def call(Map params){
         }
 
         stage('Deploy') {
-            MPLModule('Deploy', [imagem:imagem, rota: params.rota, branch: branch, database: params.database, volume: params.volume])
+            MPLModule('Deploy', [imagem:imagem, rota: params.rota, branch: branch, liquibase: params.liquibase])
         }
     }
 }
