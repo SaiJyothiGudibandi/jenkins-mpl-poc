@@ -11,6 +11,7 @@ switch(CFG.branch){
         break
 }
 
+println CFG.liquibase.database
 if(CFG.liquibase){
     MPLModule('DeployLiquibase', [liquibase: CFG.liquibase])
 }
