@@ -12,7 +12,7 @@ switch(CFG.branch){
 }
 
 if(CFG.'liquibase.host'){
-    MPLModule('DeployLiquibase', CFG)
+    MPLModule('LiquibaseDeploy', CFG)
 }
 
 def host = CFG.'liquibase.host' ? CFG.'liquibase.host' : ''
