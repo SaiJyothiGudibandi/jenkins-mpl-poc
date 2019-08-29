@@ -22,6 +22,7 @@ def call(Map params){
         }
 
         stage('Deploy') {
+            println params.liquibase.database
             MPLModule('Deploy', [imagem:imagem, rota: params.rota, branch: branch, liquibase: params.liquibase])
         }
     }
