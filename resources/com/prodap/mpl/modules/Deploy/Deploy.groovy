@@ -11,7 +11,7 @@ switch(CFG.branch){
         break
 }
 
-if(CFG.'liquibase.database'){
+if(CFG.'liquibase.host'){
     MPLModule('DeployLiquibase', CFG)
 }
 
