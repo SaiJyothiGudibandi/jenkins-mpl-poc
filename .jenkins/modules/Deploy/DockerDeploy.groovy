@@ -1,8 +1,9 @@
 /**
  * Deploy the built Docker images
  */
-
-sh "docker push saijyothi9/mlptest"
+echo"test deploy"
+//sh "docker push saijyothi9/mlptest"
+sh "docker push ${params.docker_tag}"
 
 sh "docker stop \$(docker ps -a -q)"
 sh "docker rm \$(docker ps -a -q)"
