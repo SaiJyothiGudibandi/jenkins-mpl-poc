@@ -1,1 +1,1 @@
-sh "docker build -t mlptest ."
+sh "docker build -t ml${params.docker_tag} ."
