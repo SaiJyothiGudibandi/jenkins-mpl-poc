@@ -2,4 +2,8 @@
  * Common deploy module
  */
 
-MPLModule('Docker Deploy', CFG)
+if( fileExists('Dockerfile') ) {
+    MPLModule('Docker Deploy', CFG)
+    echo "test deploy groovy"
+}
+
