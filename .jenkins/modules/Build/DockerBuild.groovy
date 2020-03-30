@@ -1,1 +1,1 @@
-sh "docker build -t ml${params.docker_tag} ."
+sh "docker build -t ${params.docker_tag} ."
