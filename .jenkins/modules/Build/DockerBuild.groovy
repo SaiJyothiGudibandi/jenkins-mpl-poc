@@ -1,1 +1,5 @@
-echo ""Docker build started""
+echo "Docker build started"
+sh "docker build -t=${params.docker_tag} ."
+echo "build completed"
+sh "docker push ${params.docker_tag}"
+echo "Pushed"
