@@ -1,11 +1,6 @@
-@Library('mpl-nested@master') _
-MPLInit()
+@Library('mpl@release') _
 
 MPLPipeline {
-    git = [
-        url:'https://github.com/SaiJyothiGudibandi/jenkins-mpl-poc.git',
-        branch: 'master'
-    ]
     modules.Deploy = null
     modules.Test = null
 }
