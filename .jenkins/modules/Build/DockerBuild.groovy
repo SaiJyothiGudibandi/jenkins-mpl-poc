@@ -6,6 +6,7 @@ def call(sudo = true, extraTags = []) {
   }
   sh """${prefix} docker image build \
         -t Test-Jenkins-MPL ."""
+  echo "Docker BUild"
 
   sh """${prefix} docker login"""
 
