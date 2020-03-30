@@ -1,9 +1,9 @@
-@Library('mpl@release') _
+@Library('mpl-nested@master') _
 MPLInit()
 
 MPLPipeline {
     git = [
-        url:'https://github.com/griddynamics/mpl.git',
+        url:'https://github.com/SaiJyothiGudibandi/jenkins-mpl-poc.git',
         branch: 'master'
     ]
     modules.Deploy = null
