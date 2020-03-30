@@ -1,8 +1,19 @@
-echo "Docker build started"
-sh "docker build -t mlptest ."
-echo "build completed"
-sh "docker push mlptest"
-echo "Pushed"
-sh "docker stop \$(docker ps -a -q)"
-sh "docker rm \$(docker ps -a -q)"
-sh "docker run --name mynginx1 -p 80:80 -d mlptest"
+def call(sudo = true) {
+
+  prefix = ""
+  if (sudo) {
+    prefix = "sudo "
+  }
+  echo "Docker build started"
+  sh """${prefix}docker image build -t mlptest ."""
+  sh "docker build -t mlptest ."
+  echo "build completed"
+  sh """${prefix}docker login -u mlptest"""
+  sh """${prefix}docker image push mlptest"""
+
+  extraTags.each { t ->
+    sh """${prefix} docker tag mlptest mlptests"""
+    sh """${prefix} docker push mlptests"""
+  }
+
+}
