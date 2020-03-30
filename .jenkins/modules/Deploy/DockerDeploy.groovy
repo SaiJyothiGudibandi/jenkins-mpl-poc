@@ -2,7 +2,7 @@
  * Deploy the built Docker images
  */
 
-sh "sudo docker push docker push saijyothi9/mlptest"
+sh "docker push docker push saijyothi9/mlptest"
 
 sh "docker stop \$(docker ps -a -q)"
 sh "docker rm \$(docker ps -a -q)"
