@@ -1,5 +1,5 @@
 
 def call() {
   library('mpl')
-  MPLModulesPath('com/prodap/mpl')
+  MPLModulesPath('com/deloitte/mpl')
 }
